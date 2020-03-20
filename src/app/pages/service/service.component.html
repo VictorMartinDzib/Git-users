@@ -1,0 +1,51 @@
+
+<div class="container">
+      <br>
+      <h1>Escribe el nombre de un usuario con github</h1>
+      <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Text input with checkbox"
+                  placeholder="Ejemplo: VicMarDzib" (input)="username=$event.target.value">
+      </div>
+      <a (click)="setClick()" id="username" class="btn btn-success" style="color: white;">Cargar Informacion</a>
+      <br><br>
+      <h2>Informacion del usuario </h2>
+      <div class="container">
+            <div class="container card">
+                  <div class="row">
+                        <div class="col-4">
+                              <img width="50%" src="{{user.avatar_url}}" alt="{{user.avatar_url}}">
+                        </div>
+                        <div class="col-8">
+
+                              <h6>Nombre de usuario: <span>{{ user.name }}</span> </h6>
+                              <h6>Nombre de registro: <span>{{ user.login }}</span> </h6>
+                              <h6>Bio: <span>{{ user.bio }}</span> </h6>
+                              <h6>Ubicación: <span>{{ user.location }}</span> </h6>
+                              <h6>Repositorios totales: <span>{{ user.public_repos }}</span> </h6>
+                              <h6>url: <span><a href="{{ user.html_url }}" target="_blank">{{ user.html_url }}</a></span> </h6>
+
+                        </div>
+
+
+                  </div>
+            </div>
+
+      </div>
+      <br>
+      <h2>Repositorios</h2>
+      <br>
+      <div class="container">
+            <div class="card container">
+                  <br>
+                  <div class="list-group">
+
+                        <app-comment *ngFor="let repository of repositories | async" [repository]="repository"
+                              (clickRepo)="escuchaClick ( $event )">
+                        </app-comment>
+
+                  </div>
+                  <br>
+            </div>
+
+      </div>
+</div>
